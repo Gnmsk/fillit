@@ -6,7 +6,7 @@
 /*   By: tkelsie <tkelsie@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/06/18 14:07:35 by tkelsie           #+#    #+#             */
-/*   Updated: 2019/06/18 18:06:16 by tkelsie          ###   ########.fr       */
+/*   Updated: 2019/06/18 19:06:35 by tkelsie          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,6 +36,8 @@ int	main(int ac, char **av)
 	char	buffer[BUFF_SIZE];
 	int		k;
 	char	*tmp;
+	char	**terminos;
+	int		t;
 
 	fd = open(av[1], O_RDONLY);
 	k = read(fd, &buffer, BUFF_SIZE);
@@ -48,6 +50,16 @@ int	main(int ac, char **av)
 	{
 		write(1, "error\n", 6);
 		return (-1);
+	}
+	terminos = (char **)malloc(sizeof(char *) * (k / 21) + 1);
+	t = 0;
+	while (t < k / 21)
+	{
+		terminos[t] = ft_strnew(21);
+		terminos[t] = ft_strncpy(terminos[t], tmp, 20);
+		terminos[t][20] = '\0';  // получается массив ['...#\n...#\n...#\n...#\n', .... ], где каждое слово - один терминос
+		tmp = tmp + 21;
+		t++;
 	}
 	return (0);
 }
