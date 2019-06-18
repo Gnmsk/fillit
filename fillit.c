@@ -6,7 +6,7 @@
 /*   By: tkelsie <tkelsie@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/06/18 14:07:35 by tkelsie           #+#    #+#             */
-/*   Updated: 2019/06/18 14:37:53 by tkelsie          ###   ########.fr       */
+/*   Updated: 2019/06/18 14:44:43 by tkelsie          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ char	*reading(int ac, char *av)
 	if (fd == -1 || read(fd, buffer, BUFF_SIZE) < 0 || ac > 2)
 		return (-1);
 	buffer[BUFF_SIZE] = '\0';
-	return (NULL);
+	return (NULL); //
 }
 
 char	*fillit(char *str)
