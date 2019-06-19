@@ -11,9 +11,9 @@ int	valid_forms(char *str)
 	int q;
 
 	i = 0;
+	q = 0;
 	while (str[i])
 	{
-		q = 0;
 		if (str[i] == '#')
 		{
 			if (i != 0)
@@ -32,4 +32,4 @@ int	valid_forms(char *str)
 			return (1);
 	}
 	return (0);
-	
+}	

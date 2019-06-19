@@ -61,9 +61,11 @@ int	terminos_check(char **str)
 	a = 0;
 	while (str[i])
 	{
+		printf("%s", str[i]);
 		a += valid_forms(str[i]);
 		i++;
 	}
+	printf("%d\n %d\n", a, i);
 	return (a - i);
 }
 
