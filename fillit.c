@@ -12,6 +12,8 @@
 
 #include "fillit.h"
 
+int	valid_forms(char *str);
+
 static int	counter(char *s, int ch)
 {
 	int		nb;
@@ -49,6 +51,22 @@ char	**terms(int k, char *tmp)
 	return (terminos);
 }
 
+int	terminos_check(char **str)
+{
+	int i;
+	int j;
+	int a;
+
+	i,j = 0;
+	a = 0;
+	while (str[i])
+	{
+		a += valid_forms(str[i]);
+		i++;
+	}
+	return (a - i);
+}
+
 int	main(int ac, char **av)
 {
 	int		fd;
@@ -69,6 +87,12 @@ int	main(int ac, char **av)
 		write(1, "error\n", 6);
 		return (-1);
 	}
-	terminos = terms(k, tmp);	
+	terminos = terms(k, tmp);
+	if (!(terminos_check(terminos)))
+	{
+		write(1, "error\n", 6);
+                return (-1);	
+	}
+	write(1, "success\n", 8);
 	return (0);
 }
