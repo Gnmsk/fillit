@@ -6,7 +6,7 @@
 /*   By: tkelsie <tkelsie@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/06/18 14:07:35 by tkelsie           #+#    #+#             */
-/*   Updated: 2019/06/18 19:06:35 by tkelsie          ###   ########.fr       */
+/*   Updated: 2019/06/19 15:07:14 by tkelsie          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,6 +30,25 @@ static int	counter(char *s, int ch)
 	return (nb);
 }
 
+char	**terms(int k, char *tmp)
+{
+	int		t;
+	char	*tm;
+	char	**terminos;
+
+	t = 0;
+	terminos = (char **)malloc(sizeof(char *) * (k / 21) + 1);
+	tm = (char *)tmp;
+	while (t++ < k / 21)
+	{
+		terminos[t] = ft_strncpy(ft_strnew(21), tm, 20);
+		terminos[t][20] = '\0';  // получается массив ['...#\n...#\n...#\n...#\n', .... ], где каждое слово - один терминос
+		//printf("%s===\n", terminos[t]);
+		tm += 21;
+	}
+	return (terminos);
+}
+
 int	main(int ac, char **av)
 {
 	int		fd;
@@ -37,7 +56,6 @@ int	main(int ac, char **av)
 	int		k;
 	char	*tmp;
 	char	**terminos;
-	int		t;
 
 	fd = open(av[1], O_RDONLY);
 	k = read(fd, &buffer, BUFF_SIZE);
@@ -51,15 +69,6 @@ int	main(int ac, char **av)
 		write(1, "error\n", 6);
 		return (-1);
 	}
-	terminos = (char **)malloc(sizeof(char *) * (k / 21) + 1);
-	t = 0;
-	while (t < k / 21)
-	{
-		terminos[t] = ft_strnew(21);
-		terminos[t] = ft_strncpy(terminos[t], tmp, 20);
-		terminos[t][20] = '\0';  // получается массив ['...#\n...#\n...#\n...#\n', .... ], где каждое слово - один терминос
-		tmp = tmp + 21;
-		t++;
-	}
+	terminos = terms(k, tmp);	
 	return (0);
 }
