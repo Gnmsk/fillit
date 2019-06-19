@@ -6,7 +6,7 @@
 /*   By: tkelsie <tkelsie@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/06/18 14:07:35 by tkelsie           #+#    #+#             */
-/*   Updated: 2019/06/19 15:07:14 by tkelsie          ###   ########.fr       */
+/*   Updated: 2019/06/19 17:39:57 by tkelsie          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,12 +41,13 @@ char	**terms(int k, char *tmp)
 	t = 0;
 	terminos = (char **)malloc(sizeof(char *) * (k / 21) + 1);
 	tm = (char *)tmp;
-	while (t++ < k / 21)
+	while (t < k / 21)
 	{
 		terminos[t] = ft_strncpy(ft_strnew(21), tm, 20);
 		terminos[t][20] = '\0';  // получается массив ['...#\n...#\n...#\n...#\n', .... ], где каждое слово - один терминос
 		//printf("%s===\n", terminos[t]);
-		tm += 21;
+		tm = tm + 21;
+		t++;
 	}
 	return (terminos);
 }
@@ -57,7 +58,8 @@ int	terminos_check(char **str)
 	int j;
 	int a;
 
-	i,j = 0;
+	i = 0;
+	j = 0;
 	a = 0;
 	while (str[i])
 	{
@@ -90,7 +92,8 @@ int	main(int ac, char **av)
 		return (-1);
 	}
 	terminos = terms(k, tmp);
-	if (!(terminos_check(terminos)))
+	//printf("%s", terminos[0]);
+	if ((terminos_check(terminos)) != 0)
 	{
 		write(1, "error\n", 6);
                 return (-1);	
