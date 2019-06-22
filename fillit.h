@@ -27,6 +27,8 @@ int     valid_forms(char *str);
 int     **coordinates(char **str, int k);
 int     terminos_check(char **str);
 char    **terms(int k, char *tmp);
-static int      counter(char *s, int ch);
+int      counter(char *s, int ch);
+int     *shift(int *temp);
+int     **coordinates(char **terminos, int k);
 
 #endif

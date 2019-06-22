@@ -52,6 +52,7 @@ int     **coordinates(char **terminos, int k)
                 }
 		temp[t] = shift(temp[t]);
 		pp = 0;
+		printf(" |||| ");
 		while (pp < 8)
 		{
 			printf("%d ", temp[t][pp]);

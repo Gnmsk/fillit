@@ -29,7 +29,7 @@ int	valid_forms(char *str)
 	return (0);
 }
 
-static int      counter(char *s, int ch)
+int      counter(char *s, int ch)
 {
         int             nb;
         char    *str;
@@ -81,6 +81,6 @@ int     terminos_check(char **str)
                 a += valid_forms(str[i]);
                 i++;
         }
-        printf("%d\n %d\n", a, i);
+        printf("%d\n%d\n", a, i);
         return (a - i);
 }
