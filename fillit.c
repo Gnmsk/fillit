@@ -6,7 +6,7 @@
 /*   By: tkelsie <tkelsie@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/06/18 14:07:35 by tkelsie           #+#    #+#             */
-/*   Updated: 2019/06/22 15:59:35 by tkelsie          ###   ########.fr       */
+/*   Updated: 2019/06/22 16:03:40 by tkelsie          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -106,8 +106,8 @@ char	**terms(int k, char *tmp)
 	{
 		terminos[t] = ft_strncpy(ft_strnew(21), tm, 20);
 		terminos[t][20] = '\0';  // получается массив ['...#\n...#\n...#\n...#\n', .... ], где каждое слово - один терминос
-		terminos[t] = shift_up(terminos[t]);
-		terminos[t] = shift_left(terminos[t]);
+	//	terminos[t] = shift_up(terminos[t]);
+		//terminos[t] = shift_left(terminos[t]);
 		printf("%s===\n", terminos[t]);
 		tm = tm + 21;
 		t++;
