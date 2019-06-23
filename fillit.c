@@ -20,6 +20,8 @@ int	main(int ac, char **av)
 	char	*tmp;
 	char	**terminos;
 	int	**term_cord;
+	t_fgrs	*memory;
+
 
 	fd = open(av[1], O_RDONLY);
 	k = read(fd, &buffer, BUFF_SIZE);

@@ -23,6 +23,13 @@
 # include <unistd.h>
 # include <stdio.h>
 
+typedef	struct		s_figures
+{
+	int	x[4];
+	int	y[4];
+	char	letter;
+}			t_fgrs;
+
 int     valid_forms(char *str);
 int     **coordinates(char **str, int k);
 int     terminos_check(char **str);
