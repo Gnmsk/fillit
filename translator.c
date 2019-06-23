@@ -1,24 +1,24 @@
 #include "fillit.h"
 
-int	*shift(int *temp)
+t_fgrs	*shift(t_fgrs *temp)
 {
-	int *t;
+	t_fgrs	*t;
 
 	t = temp;
-	while (t[1] > 0 && t[3] > 0 && t[5] > 0 && t[7] > 0)
+	while (t->x[0] > 0 && t->x[1] > 0 && t->x[2] > 0 && t->x[3] > 0)
 	{
-		t[1]-= 1;
-		t[3]-= 1;
-		t[5]-= 1;
-		t[7]-= 1;
+		t->x[0] -= 1;
+		t->x[1] -= 1;
+		t->x[2] -= 1;
+		t->x[3] -= 1;
 	}
-	while (t[0] > 0 && t[2] > 0 && t[4] > 0 && t[6] > 0)
-	{
-		t[0]-= 1;
-                t[2]-= 1;
-                t[4]-= 1;
-                t[6]-= 1;
-	}
+	while (t->y[0] > 0 && t->y[1] > 0 && t->y[2] > 0 && t->y[3] > 0)
+        {
+                t->y[0] -= 1;
+                t->y[1] -= 1;
+                t->y[2] -= 1;
+                t->y[3] -= 1;
+        }
 	return (t);
 }
 
@@ -28,37 +28,38 @@ int     **coordinates(char **terminos, int k)
         int     **temp;
         int i;
         int j;
-	int pp;
-
+	int p;
+	t_fgrs	**lt;
+	
+	lt = (t_fgrs **)malloc(sizeof(t_fgrs) * k + 1);
         t = 0;
-        temp = (int **)malloc(sizeof(int *) * k + 1);
         while (t < k)
         {
-                temp[t] = (int *)malloc(sizeof(int) * 8 + 1);
+		lt[t] = (t_fgrs *)malloc(sizeof(t_fgrs));
                 i = 0;
                 j = 0;
                 while (terminos[t][i])
                 {
                         if (terminos[t][i] == '#')
-                        {
-                                temp[t][j + 1] = i % 5;
-                                temp[t][j] = i / 5;
-				printf("%d %d ", temp[t][j], temp[t][j+1]);
-                                j += 2;
+                        {	       
+				lt[t]->x[j] = i % 5;
+				lt[t]->y[j] = i / 5;
+				j++;
                         }
                         i++;
                 }
-		temp[t] = shift(temp[t]);
-		pp = 0;
-		printf(" |||| ");
-		while (pp < 8)
+		lt[t]->letter = (char)(t + 65);
+		lt[t] = shift(lt[t]);
+		p = 0;
+		while(p < 4)
 		{
-			printf("%d ", temp[t][pp]);
-			pp++;
+			printf("%d\n",lt[t]->x[p]);
+			printf("%d\n",lt[t]->y[p]);
+			p++;
 		}
+		printf("\n");
 		t++;
-		printf("\n\n");
-
         }
+	printf("\n");
         return (temp);
 }

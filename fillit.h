@@ -23,7 +23,7 @@
 # include <unistd.h>
 # include <stdio.h>
 
-typedef	struct		s_figures
+typedef	struct		s_fgrs
 {
 	int	x[4];
 	int	y[4];
@@ -35,7 +35,8 @@ int     **coordinates(char **str, int k);
 int     terminos_check(char **str);
 char    **terms(int k, char *tmp);
 int      counter(char *s, int ch);
-int     *shift(int *temp);
+t_fgrs	*shift(t_fgrs *temp);
+//int     *shift(int *temp);
 int     **coordinates(char **terminos, int k);
 
 #endif
