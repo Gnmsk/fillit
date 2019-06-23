@@ -63,6 +63,7 @@ t_fgrs	**coordinates(char **terminos, int k)
 			printf("%d ",lt[t]->y[p]);
 			p++;
 		}
+		printf("%c", lt[t]->letter);
 		printf("\n\n");
 		t++;
         }
