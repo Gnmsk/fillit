@@ -22,10 +22,10 @@ t_fgrs	*shift(t_fgrs *temp)
 	return (t);
 }
 
-int     **coordinates(char **terminos, int k)
+t_fgrs	**coordinates(char **terminos, int k)
 {
         int t;
-        int     **temp;
+     //   int     **temp;
         int i;
         int j;
 	int p;
@@ -53,13 +53,19 @@ int     **coordinates(char **terminos, int k)
 		p = 0;
 		while(p < 4)
 		{
-			printf("%d\n",lt[t]->x[p]);
-			printf("%d\n",lt[t]->y[p]);
+			printf("%d ",lt[t]->x[p]);
 			p++;
 		}
+		p = 0;
 		printf("\n");
+		while(p < 4)
+		{
+			printf("%d ",lt[t]->y[p]);
+			p++;
+		}
+		printf("\n\n");
 		t++;
         }
 	printf("\n");
-        return (temp);
+        return (lt);
 }

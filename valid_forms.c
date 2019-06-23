@@ -81,6 +81,5 @@ int     terminos_check(char **str)
                 a += valid_forms(str[i]);
                 i++;
         }
-        printf("%d\n%d\n", a, i);
         return (a - i);
 }

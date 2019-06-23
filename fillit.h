@@ -31,12 +31,11 @@ typedef	struct		s_fgrs
 }			t_fgrs;
 
 int     valid_forms(char *str);
-int     **coordinates(char **str, int k);
+//int     **coordinates(char **str, int k);
 int     terminos_check(char **str);
 char    **terms(int k, char *tmp);
 int      counter(char *s, int ch);
 t_fgrs	*shift(t_fgrs *temp);
-//int     *shift(int *temp);
-int     **coordinates(char **terminos, int k);
+t_fgrs  **coordinates(char **terminos, int k);
 
 #endif
