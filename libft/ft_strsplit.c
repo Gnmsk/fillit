@@ -67,11 +67,9 @@ static char		**ft_strfill(char **dest, char const *s, char c, size_t n)
 
 char			**ft_strsplit(char const *s, char c)
 {
-	size_t		i;
 	size_t		n;
 	char		**dest;
 
-	i = 0;
 	if (!s)
 		return (0);
 	n = ft_count_words(s, c);

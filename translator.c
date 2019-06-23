@@ -28,7 +28,6 @@ int     **coordinates(char **terminos, int k)
         int     **temp;
         int i;
         int j;
-	int s;
 	int pp;
 
         t = 0;
@@ -38,7 +37,6 @@ int     **coordinates(char **terminos, int k)
                 temp[t] = (int *)malloc(sizeof(int) * 8 + 1);
                 i = 0;
                 j = 0;
-		s = 0;
                 while (terminos[t][i])
                 {
                         if (terminos[t][i] == '#')
