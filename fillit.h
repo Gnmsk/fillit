@@ -31,7 +31,6 @@ typedef	struct		s_fgrs
 }			t_fgrs;
 
 int     valid_forms(char *str);
-//int     **coordinates(char **str, int k);
 int     terminos_check(char **str);
 char    **terms(int k, char *tmp);
 int      counter(char *s, int ch);
