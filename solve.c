@@ -1,4 +1,4 @@
-#include "filit.h"
+#include "fillit.h"
 
 char **solve(t_fgrs **memory)
 {
