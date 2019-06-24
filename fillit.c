@@ -19,7 +19,6 @@ int	main(int ac, char **av)
 	int		k;
 	char	*tmp;
 	char	**terminos;
-//	int	**term_cord;
 	t_fgrs	**memory;
 
 
@@ -36,7 +35,6 @@ int	main(int ac, char **av)
 		return (-1);
 	}
 	terminos = terms(k, tmp);
-//	term_cord = coordinates(terminos , k / 21);
 	if ((terminos_check(terminos)) != 0)
 	{
 		write(1, "error\n", 6);

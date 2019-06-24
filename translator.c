@@ -25,7 +25,6 @@ t_fgrs	*shift(t_fgrs *temp)
 t_fgrs	**coordinates(char **terminos, int k)
 {
         int t;
-     //   int     **temp;
         int i;
         int j;
 	int p;
