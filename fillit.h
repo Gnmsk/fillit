@@ -37,5 +37,7 @@ char    **terms(int k, char *tmp);
 int      counter(char *s, int ch);
 t_fgrs	*shift(t_fgrs *temp);
 t_fgrs  **coordinates(char **terminos, int k);
+char	**solve(t_fgrs **memory);
+char	**map(int size);
 
 #endif

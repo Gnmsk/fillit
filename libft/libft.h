@@ -58,6 +58,7 @@ int					ft_isprint(int c);
 
 int					ft_tolower(int c);
 int					ft_toupper(int c);
+int					ft_max(int a, int b);
 
 void				ft_putchar(char c);
 void				ft_putnbr(int n);

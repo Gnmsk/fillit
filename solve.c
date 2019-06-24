@@ -1,13 +1,14 @@
-#include "fillit.h"
+#include "filit.h"
 
-char **solve(t_fgrs memory)
+char **solve(t_fgrs **memory)
 {
 	int i;
-	t_fgrs	*temp;
+	t_fgrs	**temp;
 
+	temp = memory;
 	i = 0;
-	map(temp[i] -> y[3])
-	return ();
+	map(ft_max(temp[i]-> y[3], temp[i]-> x[3]));
+	return (0);
 }
 
 char **map(int size)
@@ -19,11 +20,11 @@ char **map(int size)
 
         y = 0;
         map = (char **)malloc(sizeof(char *) * size);
-        while (y < size)
+        while (y <= size)
         {
                 map[y] = (char *)malloc(sizeof(char) * size);
                 x = 0;
-                while (x < size)
+                while (x <= size)
                 {
                         map[y][x] = c;
                         x++;
@@ -31,9 +32,9 @@ char **map(int size)
                 y++;
         }
 	y = 0;
-	while(y < i)
+	while(y <= size)
 	{
-		printf("%s",mapac[y]);
+		printf("%s",map[y]);
 		printf("\n");
 		y++;
 	}

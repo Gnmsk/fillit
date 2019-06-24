@@ -41,6 +41,7 @@ int	main(int ac, char **av)
                 return (-1);	
 	}
 	memory = coordinates(terminos , k / 21);
+	solve(memory);
 	write(1, "success\n", 8);
 	return (0);
 }

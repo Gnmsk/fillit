@@ -73,7 +73,7 @@ FILES = ./ft_atoi.c \
 ./ft_lst_push_front.c \
 ./ft_lst_push_back.c \
 ./ft_lst_reverse.c \
-
+./ft_max.c
 OFILES			= $(FILES:./%.c= %.o)
 
 $(NAME): $(OFILES)
