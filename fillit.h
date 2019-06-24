@@ -30,6 +30,13 @@ typedef	struct		s_fgrs
 	char	letter;
 }			t_fgrs;
 
+typedef	struct		s_map
+{
+	char	**current;
+	char	**previous;
+	char	**previous1;
+}			t_map;
+
 int     valid_forms(char *str);
 int     terminos_check(char **str);
 char    **terms(int k, char *tmp);

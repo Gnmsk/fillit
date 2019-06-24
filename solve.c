@@ -2,16 +2,16 @@
 
 char **solving(char ***map, t_fgrs ***temp, int size)
 {
-	int i;
-	
-	i = 0;
-	while()
-	{
-		if(&map[x][y])
-		{
-			
-		}
-	}
+//	int i;
+//	
+//	i = 0;
+//	while()
+//	{
+//		if(&map[x][y])
+//		{
+//			
+//		}
+//	}
 	return(NULL);
 }
 
@@ -21,16 +21,18 @@ char **solve(t_fgrs **memory)
 	int t;
 	int mp;
 	t_fgrs	**temp;
-	char 	**mapa;
+	t_map	*mapa;
+	char 	**current;
 
 	temp = memory;
 	i = 0;
 	t = 0;
 	mp = 0;
-	mapa = map((ft_max(temp[t]-> x, temp[t]-> y, 4)) + i);
+	mapa = (t_map *)malloc(sizeof(t_map));
+	mapa->current = map((ft_max(temp[t]-> x, temp[t]-> y, 4)) + i);
 	while(mp <= ft_max(temp[t]-> x, temp[t]-> y, 4))
 	{
-		printf("%s", mapa[mp]);
+		printf("%s", mapa->current[mp]);
 		printf("\n");
 		mp++;
 	}
