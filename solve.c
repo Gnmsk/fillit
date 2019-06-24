@@ -1,7 +1,17 @@
 #include "fillit.h"
 
-char **solving(char ***map, t_fgrs ***temp)
+char **solving(char ***map, t_fgrs ***temp, int size)
 {
+	int i;
+	
+	i = 0;
+	while()
+	{
+		if(&map[x][y])
+		{
+			
+		}
+	}
 	return(NULL);
 }
 
