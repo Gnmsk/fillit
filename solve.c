@@ -63,7 +63,7 @@ char	*solving(t_fgrs **memory, t_map *mapa, int mapsize, int figurenumber, int e
 			}
 			else
 			{
-				printf("\ncell not empty\n");
+				printf("cell not empty\n");
 				mapa->current = mapa->previous;
 				return ("error");
 			}
@@ -101,7 +101,7 @@ char **solve(t_fgrs **memory)
         {
 		figuresize = ft_max(temp[t]-> x, temp[t]-> y, 4);
         	mapa->current = map(figuresize+1);
-                printf("\n\n");
+                printf("\n");
                 empty = searchempty(mapa, figuresize+1);
 		while (empty < mapsize*mapsize && solving(temp, mapa, figuresize+1, t, empty) != NULL)
 			empty++; // in case of solving returns an error empty++
@@ -114,13 +114,14 @@ char **solve(t_fgrs **memory)
                         mp++;
                 }
                 t++;
+		printf("\n");
         }
 	t = 0;
 	while (t < 6)
 	{
 		figuresize = ft_max(temp[t]-> x, temp[t]-> y, 4);
                 mapa->current = map(mapsize);
-		printf("\n\n");
+		printf("\n");
 		mapa->current[0][0] = 'z';
 		mapa->current[0][3] = 'z';
 		empty = searchempty(mapa, mapsize);
@@ -130,6 +131,8 @@ char **solve(t_fgrs **memory)
 			empty++; // in case of solving returns an error empty++
 			printf("new attempt\n");
 		}
+		// if (empty == mapsize*mapsize)
+		// 	draw new map
 		mp = 0;
 		while(mp < mapsize)
 		{
@@ -138,6 +141,7 @@ char **solve(t_fgrs **memory)
                 	mp++;
         	}	
 		t++;
+		printf("\n");
 	}
 	return (0);
 }
