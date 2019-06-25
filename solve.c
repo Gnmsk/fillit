@@ -50,7 +50,7 @@ char	*solving(t_fgrs **memory, t_map *mapa, int mapsize, int figurenumber, int e
 	//mapa->previous1 = mapa->previous;
         mapa->previous = mapa->current;
 	if (y + ft_maxsingle(temp[figurenumber]->y, 4) > mapsize || x + ft_maxsingle(temp[figurenumber]->x, 4) > mapsize)
-	      printf("error: map needs to be extended\n");
+	      return("error: map needs to be extended\n");
 	// draw new map
 	else
 	{
