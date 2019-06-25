@@ -96,7 +96,7 @@ char **solve(t_fgrs **memory)
        	mapsize = 4;	
 	mapa = (t_map *)malloc(sizeof(t_map));
 	mapa->current = map(mapsize);
-	while(mp <= mapsize)
+	while(mp < mapsize)
 	{
 		printf("%s", mapa->current[mp]);
 		printf("\n");
