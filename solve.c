@@ -24,7 +24,7 @@ int	*searchempty(t_map *mapa, int size)
 	yx[0] = -1;
 	yx[1] = -1;
 	c = 0;
-	printf("size %d \n", size);
+	printf("mapsize %d \n", size);
 	while (c < size*size)
 	{
 		if (mapa->current[c/size][c%size] == '.')
