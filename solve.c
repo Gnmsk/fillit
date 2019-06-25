@@ -126,7 +126,10 @@ char **solve(t_fgrs **memory)
 		empty = searchempty(mapa, mapsize);
 		//solving(temp, mapa, mapsize, t, empty);
 		while (empty < mapsize*mapsize && solving(temp, mapa, figuresize+1, t, empty) != NULL)
-                        empty++; // in case of solving returns an error empty++
+		{
+			empty++; // in case of solving returns an error empty++
+			printf("new attempt\n");
+		}
 		mp = 0;
 		while(mp < mapsize)
 		{
