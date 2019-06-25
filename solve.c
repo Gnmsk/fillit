@@ -62,9 +62,18 @@ char	**solving(t_fgrs **memory, t_map *mapa, int figuresize, int mapsize, int fi
 	else
 	{
 		while(i < 4)
-		{
-			mapa->current[empty[0] + temp[figurenumber]->y[i]][empty[1] + temp[figurenumber]->x[i]] = temp[figurenumber]->letter;
-			i++;
+		{	
+			if ( mapa->current[empty[0] + temp[figurenumber]->y[i]][empty[1] + temp[figurenumber]->x[i]]  == '.')
+			{
+				mapa->current[empty[0] + temp[figurenumber]->y[i]][empty[1] + temp[figurenumber]->x[i]] = temp[figurenumber]->letter;
+				i++;
+			}
+			else
+			{
+				printf("\ncell not empty\n");
+				mapa->current = mapa->previous;
+				return (NULL);
+			}
 		}		
 	}	
 	return (NULL);
@@ -114,6 +123,7 @@ char **solve(t_fgrs **memory)
                 mapa->current = map(mapsize);
 		printf("\n\n");
 		mapa->current[0][0] = 'z';
+		mapa->current[0][3] = 'z';
 		solving(temp, mapa, figuresize, mapsize, t);
 		mp = 0;
 		while(mp < mapsize)
