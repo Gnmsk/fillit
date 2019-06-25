@@ -36,9 +36,8 @@ int	searchempty(t_map *mapa, int size)
 	return (yx);
 }
 
-char	**solving(t_fgrs **memory, t_map *mapa, int mapsize, int figurenumber)
+char	*solving(t_fgrs **memory, t_map *mapa, int mapsize, int figurenumber, int empty)
 {
-	int	empty;
 	t_fgrs 	**temp;
 	int x;
 	int y;
@@ -46,7 +45,6 @@ char	**solving(t_fgrs **memory, t_map *mapa, int mapsize, int figurenumber)
 
 	i = 0;
 	temp = memory;
-	empty = searchempty(mapa, mapsize);
 	y = empty/mapsize;
 	x = empty%mapsize;
 	//mapa->previous1 = mapa->previous;
@@ -67,9 +65,7 @@ char	**solving(t_fgrs **memory, t_map *mapa, int mapsize, int figurenumber)
 			{
 				printf("\ncell not empty\n");
 				mapa->current = mapa->previous;
-				empty++;
-				
-				return (NULL);
+				return ("error");
 			}
 		}		
 	}
@@ -85,7 +81,9 @@ char **solve(t_fgrs **memory)
 	t_fgrs	**temp;
 	t_map	*mapa;
 	int	figuresize;
+	int empty;
 
+	empty = 0;
 	temp = memory;
 	t = 0;
 	mp = 0;
@@ -104,7 +102,10 @@ char **solve(t_fgrs **memory)
 		figuresize = ft_max(temp[t]-> x, temp[t]-> y, 4);
         	mapa->current = map(figuresize+1);
                 printf("\n\n");
-                solving(temp, mapa, figuresize+1, t);
+                empty = searchempty(mapa, figuresize+1);
+		while (empty < mapsize*mapsize && solving(temp, mapa, figuresize+1, t, empty) != NULL)
+			empty++; // in case of solving returns an error empty++
+		//solving(temp, mapa, figuresize+1, t, empty);
                 mp = 0;
                 while(mp < figuresize+1)
                 {
@@ -122,7 +123,10 @@ char **solve(t_fgrs **memory)
 		printf("\n\n");
 		mapa->current[0][0] = 'z';
 		mapa->current[0][3] = 'z';
-		solving(temp, mapa, mapsize, t);
+		empty = searchempty(mapa, mapsize);
+		//solving(temp, mapa, mapsize, t, empty);
+		while (empty < mapsize*mapsize && solving(temp, mapa, figuresize+1, t, empty) != NULL)
+                        empty++; // in case of solving returns an error empty++
 		mp = 0;
 		while(mp < mapsize)
 		{
