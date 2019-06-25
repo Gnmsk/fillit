@@ -17,29 +17,23 @@
 
 int	*searchempty(t_map *mapa, int size)
 {
-	int y;
-	int x;
+	int c;
 	int *yx;
 
 	yx = (int *)malloc(sizeof(int)*2);
 	yx[0] = -1;
 	yx[1] = -1;
-	x = 0;
-	y = 0;
-	while (y <=size && yx[0] == -1 && yx[1] == -1)
+	c = 0;
+	printf("size %d \n", size);
+	while (c < size*size)
 	{
-		x = 0;
-		while(x <= size)
-		{
-			if (mapa->current[y][x] == '.')
-			{	yx[0] = y;
-				yx[1] = x;
-				printf("empty cell: %d %d\n\n", yx[0],yx[1]);
-				return(yx);
-			}
-			x++;
+		if (mapa->current[c/size][c%size] == '.')
+		{	yx[0] = c/size;
+			yx[1] = c%size;
+			printf("empty cell: %d %d\n\n", yx[0],yx[1]);
+			return(yx);
 		}
-		y++;
+		c++;
 	}
 	printf("\n%d %d\n", yx[0],yx[1]);	
 	return (yx);
