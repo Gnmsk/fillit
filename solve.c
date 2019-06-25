@@ -143,6 +143,32 @@ char **solve(t_fgrs **memory)
 		t++;
 		printf("\n");
 	}
+
+// tried to solve all the maps
+
+	mapa->current = map(16);
+	mapa->current[0][0] = 'z';
+	t = 0;
+	while (t < 6)
+        {
+                figuresize = ft_max(temp[t]-> x, temp[t]-> y, 4);
+                empty = searchempty(mapa, 16);
+                while (empty < 16*16 && solving(temp, mapa, 16, t, empty) != NULL)
+                {
+                        empty++; // in case of solving returns an error empty++ and also it doesn't delete previous solution right now
+                        printf("new attempt\n");
+                }
+                // if (empty == mapsize*mapsize)
+                //      draw new map
+                t++;
+        }
+	mp = 0;
+	while(mp < 16)
+	{
+		printf("%s", mapa->current[mp]);
+                printf("\n");
+                mp++;
+	}
 	return (0);
 }
 
