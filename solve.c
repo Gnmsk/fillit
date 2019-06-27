@@ -24,6 +24,8 @@ int	checking(t_fgrs *memory, char	**tmp, int mapsize, int empty)
 	i = 0;
 	y = empty/mapsize;
 	x = empty%mapsize;
+	if (y + ft_maxsingle(memory->y, 4) >= mapsize || x + ft_maxsingle(memory->x, 4) >= mapsize)
+		return (0);
 	while(i < 4)
 	{	
 		if (tmp[y + memory->y[i]][x + memory->x[i]]  == '.')
@@ -51,37 +53,60 @@ char	**put_in(t_fgrs *memory, char **tmp, int mapsize, int empty)
 	return (tmp);
 }
 
+char	**new_map(char **current, int mapsize)
+{
+	char	**tmp;
+	int i;
+
+	tmp = map(mapsize);
+        i = 0;
+	while (i < mapsize-1)
+	{
+		tmp[i] = ft_strncpy( tmp[i], current[i],  mapsize-1);
+		tmp[i][mapsize-1] = '.';
+		i++;
+	}
+	return (tmp);
+}
+
 char **solve(t_fgrs **memory)
 {
 	int mapsize;
 	int t;
 	int mp;
 	t_map	*mapa;
-//	int	figuresize;
 	int empty;
 	int check;
+	char	**tmp;
 
 	t = 0;
 	mp = 0;
-       	mapsize = 16;	
+       	mapsize = 4;	
+	int i;
 	mapa = (t_map *)malloc(sizeof(t_map));
 	mapa->current = map(mapsize);
 	while (t < 6)
         {
-	//	mapsize = 16;
 	//	mapsize = ft_max(memory[t]-> x, memory[t]-> y, 4) + 1;
         //	mapa->current = map(mapsize);
-        //	printf("\n");
                 empty = 0;
 		check = 0;
-		while (empty < mapsize*mapsize && check < 1)
+		while (empty <= mapsize*mapsize && check < 1)
 		{
 			check = checking(memory[t], mapa->current, mapsize, empty);
 			empty++; // in case of solving returns an error empty++
 		}
-	//	if (check == 0)
-	//	{
-//		}
+		while (check == 0)
+		{
+			mapsize++;
+			mapa->current = new_map(mapa->current, mapsize);
+			empty = 0;
+			while (empty < mapsize*mapsize && check < 1)
+	                {
+        	                check = checking(memory[t], mapa->current, mapsize, empty);
+                	        empty++; // in case of solving returns an error empty++
+                	}
+		}
 		if (check == 1)
 		{
 			mapa->previous1 = mapa->previous;
@@ -91,8 +116,7 @@ char **solve(t_fgrs **memory)
 		mp = 0;
                 while(mp < mapsize)
                 {
-                        printf("%s", mapa->current[mp]);
-                        printf("\n");
+                        printf("%s\n", mapa->current[mp]);
                         mp++;
                 }
                 t++;
