@@ -15,65 +15,58 @@
 //	return(NULL);
 //}
 
-int	searchempty(t_map *mapa, int size)
+int	checking(t_fgrs *memory, char	**tmp, int mapsize, int empty)
 {
-	int c;
-	int yx;
-
-	yx = -1;
-	c = 0;
-	printf("mapsize %d \n", size);
-	while (c < size*size && yx == -1)
-	{
-		if (mapa->current[c/size][c%size] == '.')
-		{	yx = c;
-			printf("empty cell: %d %d\n\n", yx/size, yx%size);
-			return(yx);
-		}
-		c++;
-	}
-	printf("\n%d %d\n", yx/size, yx%size);
-	return (yx);
-}
-
-char	*solving(t_fgrs **memory, t_map *mapa, int mapsize, int figurenumber, int empty)
-{
-	t_fgrs 	**temp;
 	int x;
 	int y;
 	int	i;
 
 	i = 0;
-	temp = memory;
 	y = empty/mapsize;
 	x = empty%mapsize;
-	//mapa->previous1 = mapa->previous;
-        mapa->previous = mapa->current;
-	if (y + ft_maxsingle(temp[figurenumber]->y, 4) > mapsize || x + ft_maxsingle(temp[figurenumber]->x, 4) > mapsize)
+	if (y + ft_maxsingle(memory->y, 4) >= mapsize || x + ft_maxsingle(memory->x, 4) >= mapsize)
+		return (0);
+	while(i < 4)
+	{	
+		if (tmp[y + memory->y[i]][x + memory->x[i]]  == '.')
+			i++;
+		else
+			return (0);		
+	}	
+	return (1);
+}
+
+char	**put_in(t_fgrs *memory, char **tmp, int mapsize, int empty)
+{
+	int i;
+	int x;
+	int y;
+
+	i = 0;
+	y = empty/mapsize;
+	x = empty%mapsize;
+	while(i < 4)
 	{
-		printf("map needs to be extended\n");
-		return("error: map needs to be extended\n");
+		tmp[y + memory->y[i]][x + memory->x[i]] = memory->letter;
+		i++;
 	}
-	// draw new map
-	else
+	return (tmp);
+}
+
+char	**new_map(char **current, int mapsize)
+{
+	char	**tmp;
+	int i;
+
+	tmp = map(mapsize);
+        i = 0;
+	while (i < mapsize-1)
 	{
-		while(i < 4)
-		{	
-			if ( mapa->current[y + temp[figurenumber]->y[i]][x + temp[figurenumber]->x[i]]  == '.')
-			{
-				mapa->current[y + temp[figurenumber]->y[i]][x + temp[figurenumber]->x[i]] = temp[figurenumber]->letter;
-				i++;
-			}
-			else
-			{
-				printf("cell not empty\n");
-				mapa->current = mapa->previous;
-				return ("error");
-			}
-		}		
+		tmp[i] = ft_strncpy( tmp[i], current[i],  mapsize-1);
+		tmp[i][mapsize-1] = '.';
+		i++;
 	}
-	mapa->previous1 = mapa->previous;	
-	return (NULL);
+	return (tmp);
 }
 
 char **solve(t_fgrs **memory)
@@ -81,19 +74,16 @@ char **solve(t_fgrs **memory)
 	int mapsize;
 	int t;
 	int mp;
-	t_fgrs	**temp;
 	t_map	*mapa;
-	int	figuresize;
 	int empty;
+	int check;
 
-	empty = 0;
-	temp = memory;
 	t = 0;
 	mp = 0;
-	figuresize = ft_max(temp[t]-> x, temp[t]-> y, 4);
-       	mapsize = 4;	
+       	mapsize = ft_max(memory[0]-> x, memory[0]-> y, 4) + 1;	
 	mapa = (t_map *)malloc(sizeof(t_map));
 	mapa->current = map(mapsize);
+<<<<<<< HEAD
 	while(mp < mapsize)
 	{
 		printf("%s", mapa->current[mp]);
@@ -130,48 +120,43 @@ char **solve(t_fgrs **memory)
 		empty = searchempty(mapa, mapsize);
 		//solving(temp, mapa, mapsize, t, empty);
 		while (empty < mapsize*mapsize && solving(temp, mapa, figuresize+1, t, empty) != NULL)
-		{
-			empty++; // in case of solving returns an error empty++
-			printf("new attempt\n");
-		}
-		// if (empty == mapsize*mapsize)
-		// 	draw new map
-		mp = 0;
-		while(mp < mapsize)
-		{
-                	printf("%s", mapa->current[mp]);
-                	printf("\n");
-                	mp++;
-        	}	
-		t++;
-		printf("\n");
-	}
-
-// tried to solve all the maps
-
-	mapa->current = map(16);
-	mapa->current[0][0] = 'z';
-	t = 0;
+=======
 	while (t < 6)
         {
-                figuresize = ft_max(temp[t]-> x, temp[t]-> y, 4);
-                empty = searchempty(mapa, 16);
-                while (empty < 16*16 && solving(temp, mapa, 16, t, empty) != NULL)
+                empty = 0;
+		check = 0;
+		while (empty <= mapsize*mapsize && check < 1)
+>>>>>>> b58d03aabbd3415c71948abd50dfe984870188e9
+		{
+			check = checking(memory[t], mapa->current, mapsize, empty);
+			empty++; // in case of solving returns an error empty++
+		}
+		while (check == 0)
+		{
+			mapsize++;
+			mapa->current = new_map(mapa->current, mapsize);
+			empty = 0;
+			while (empty < mapsize*mapsize && check < 1)
+	                {
+        	                check = checking(memory[t], mapa->current, mapsize, empty);
+                	        empty++; // in case of solving returns an error empty++
+                	}
+		}
+		if (check == 1)
+		{
+			mapa->previous1 = mapa->previous;
+			mapa->previous = mapa->current;
+			mapa->current = put_in(memory[t], mapa->current, mapsize, empty-1);
+		}
+		mp = 0;
+                while(mp < mapsize)
                 {
-                        empty++; // in case of solving returns an error empty++ and also it doesn't delete previous solution right now
-                        printf("new attempt\n");
+                        printf("%s\n", mapa->current[mp]);
+                        mp++;
                 }
-                // if (empty == mapsize*mapsize)
-                //      draw new map
                 t++;
+		printf("\n");
         }
-	mp = 0;
-	while(mp < 16)
-	{
-		printf("%s", mapa->current[mp]);
-                printf("\n");
-                mp++;
-	}
 	return (0);
 }
 

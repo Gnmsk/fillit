@@ -35,10 +35,10 @@ char **map(int size)
                 map[y] = (char *)malloc(sizeof(char) * (size + 1);
                 x = 0;
                 while (x < size)
-                {
-                        map[y][x] = '.';
-                        x++;
-                }
+		{
+			map[y][x] = '.';
+			x++;
+		}
 		map[y][x] = '\0';
                 y++;
         }
