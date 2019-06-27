@@ -77,7 +77,6 @@ char **solve(t_fgrs **memory)
 	t_map	*mapa;
 	int empty;
 	int check;
-	char	**tmp;
 
 	t = 0;
 	mp = 0;
