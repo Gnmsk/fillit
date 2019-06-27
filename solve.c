@@ -100,10 +100,10 @@ char **solve(t_fgrs **memory)
 		printf("\n");
 		mp++;
 	}
-	while (t < 6)
+	while (t < 6) //добить нулевую структуру для вайла
         {
 		figuresize = ft_max(temp[t]-> x, temp[t]-> y, 4);
-        	mapa->current = map(figuresize+1);
+        	mapa->current = map(figuresize+1);              //в мап закинуть функцию фт макс
                 printf("\n");
                 empty = searchempty(mapa, figuresize+1);
 		while (empty < mapsize*mapsize && solving(temp, mapa, figuresize+1, t, empty) != NULL)
