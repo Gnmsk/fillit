@@ -83,50 +83,11 @@ char **solve(t_fgrs **memory)
        	mapsize = ft_max(memory[0]-> x, memory[0]-> y, 4) + 1;	
 	mapa = (t_map *)malloc(sizeof(t_map));
 	mapa->current = map(mapsize);
-<<<<<<< HEAD
-	while(mp < mapsize)
-	{
-		printf("%s", mapa->current[mp]);
-		printf("\n");
-		mp++;
-	}
-	while (t < 6) //добить нулевую структуру для вайла
-        {
-		figuresize = ft_max(temp[t]-> x, temp[t]-> y, 4);
-        	mapa->current = map(figuresize+1);              //в мап закинуть функцию фт макс
-                printf("\n");
-                empty = searchempty(mapa, figuresize+1);
-		while (empty < mapsize*mapsize && solving(temp, mapa, figuresize+1, t, empty) != NULL)
-			empty++; // in case of solving returns an error empty++
-		//solving(temp, mapa, figuresize+1, t, empty);
-                mp = 0;
-                while(mp < figuresize+1)
-                {
-                        printf("%s", mapa->current[mp]);
-                        printf("\n");
-                        mp++;
-                }
-                t++;
-		printf("\n");
-        }
-	t = 0;
-	while (t < 6)
-	{
-		figuresize = ft_max(temp[t]-> x, temp[t]-> y, 4);
-                mapa->current = map(mapsize);
-		printf("\n");
-		mapa->current[0][0] = 'z';
-		mapa->current[0][3] = 'z';
-		empty = searchempty(mapa, mapsize);
-		//solving(temp, mapa, mapsize, t, empty);
-		while (empty < mapsize*mapsize && solving(temp, mapa, figuresize+1, t, empty) != NULL)
-=======
 	while (t < 6)
         {
                 empty = 0;
 		check = 0;
 		while (empty <= mapsize*mapsize && check < 1)
->>>>>>> b58d03aabbd3415c71948abd50dfe984870188e9
 		{
 			check = checking(memory[t], mapa->current, mapsize, empty);
 			empty++; // in case of solving returns an error empty++
