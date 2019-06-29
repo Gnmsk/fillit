@@ -21,7 +21,8 @@ int	main(int ac, char **av)
 	char	**terminos;
 	t_fgrs	**memory;
 
-
+	if (ac < 2)
+		return (-1);
 	fd = open(av[1], O_RDONLY);
 	k = read(fd, &buffer, BUFF_SIZE);
 	tmp = ft_strnew(k+1);

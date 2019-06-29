@@ -38,7 +38,7 @@ int      counter(char *s, int ch)
         str = (char *)s;
         while (*str)
         {
-                if (*str != '.' & *str != '\n' & *str != '#')
+                if ((*str != '.') & (*str != '\n') & (*str != '#'))
                         return (-1);
                 if (*str == ch)
                         nb++;
@@ -70,11 +70,9 @@ char    **terms(int k, char *tmp)
 int     terminos_check(char **str)
 {
         int i;
-        int j;
         int a;
 
         i = 0;
-        j = 0;
         a = 0;
         while (str[i])
         {
