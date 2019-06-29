@@ -109,15 +109,22 @@ char **solve(t_fgrs **memory)
 			mapa->previous = mapa->current;
 			mapa->current = put_in(memory[t], mapa->current, mapsize, empty-1);
 		}
-		mp = 0;
+		t++;
+/*		mp = 0;
                 while(mp < mapsize)
                 {
-                        printf("%s\n", mapa->current[mp]);
-                        mp++;
+			printf("%s\n", mapa->current[mp]);
+			mp++;
                 }
                 t++;
-		printf("\n");
+		printf("\n");*/
         }
+	mp = 0;
+	while(mp < mapsize)
+	{
+		printf("%s\n", mapa->current[mp]);
+		mp++;
+	}
 	return (0);
 }
 

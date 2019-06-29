@@ -12,7 +12,7 @@
 
 #ifndef FILLIT_H
 # define FILLIT_H
-# define BUFF_SIZE 547
+# define BUFF_SIZE 546
 
 # include "libft/libft.h"
 
@@ -37,6 +37,12 @@ typedef	struct		s_map
 	char	**previous1;
 }			t_map;
 
+typedef struct		s_karta
+{
+	char	**map;
+	int	id;
+}			t_karta;
+
 int     valid_forms(char *str);
 int     terminos_check(char **str);
 char    **terms(int k, char *tmp);
@@ -45,5 +51,8 @@ t_fgrs	*shift(t_fgrs *temp);
 t_fgrs  **coordinates(char **terminos, int k);
 char	**solve(t_fgrs **memory);
 char	**map(int size);
+char    **remap(char ***mapa);
+t_fgrs  **file_valid(char *file);
+void	d_error(void);
 
 #endif

@@ -2,8 +2,8 @@ NAME = fillit
 FLAGS = -Wall -Wextra -Werror
 FILES = ./fillit.c \
 	./solve.c \
-	./valid_forms.c \
 	./translator.c \
+	./validation.c \
 
 all: $(NAME)
 
