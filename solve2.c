@@ -22,9 +22,9 @@ void	putin(t_karta *mapa, t_fgrs *temp)
 		mapa->map[temp->x[i]][temp->y[i]] = temp->letter;
 }
 
-t_karta map(int size, int i)
+t_karta *map(int size)
 {
-	t_karta	temp;
+	t_karta	*temp;
         char **map;
         int x;
         int y;
@@ -45,43 +45,43 @@ t_karta map(int size, int i)
                 y++;
         }
 	temp->map[y] = '\0';
-	temp->id = i;
+	temp->id = 0;
         return (temp);
 }
 
 char	**solve(t_fgrs **temp, t_karta **mapa)
 {
 	int i;
-	char **mapka;
+	int id;
 
 	i = 0;
-	mapka = map(ft_max(temp[i]->x, temp[i]->y, 4));
-	if (is_empty(mapka, temp[i]))
+	id = 0;
+	if (is_empty(mapa, temp[i]))
 	{
-		putin(mapka, temp[i]);
+		putin(mapa, temp[i]);
 		i++;
 
 	}
 	else
-		remap(&mapka);
-	solve(temp[i]);
+		remap(&mapa);
+	solve(temp[i], mapa);
 	return(NULL);
 }
 
-char	**remap(t_karta ***mapa)
+t_karta **remap(t_karta ***mapa)
 {
-	int i
+	int i;
 	int j;
-	char **newmap;
+	t_karta *newmap;
 
 	i = 0;
 	j = 0;
-	while (*mapa[i])
+	while (*mapa->map[i])
 		i++;
 	newmap = map(i);
 	while(j < i)
 	{
-		ft_strcpy(newmap[j] , *mapa[j]);
+		ft_strcpy(newmap->map[j] , mapa->map[j]);
 		j++;
 	}
 	return (newmap);

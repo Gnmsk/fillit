@@ -49,9 +49,9 @@ char    **terms(int k, char *tmp);
 int      counter(char *s, int ch);
 t_fgrs	*shift(t_fgrs *temp);
 t_fgrs  **coordinates(char **terminos, int k);
-char	**solve(t_fgrs **memory);
-char	**map(int size);
-char    **remap(char ***mapa);
+char	**solve(t_fgrs **memory, t_karta **map);
+t_karta	*map(int size);
+t_karta **remap(t_karta ***mapa);
 t_fgrs  **file_valid(char *file);
 void	d_error(void);
 
