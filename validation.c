@@ -16,7 +16,7 @@ t_fgrs	**file_valid(char *file)
 	if(counter(buffer, '#') % 4 != 0 || counter(buffer, '.') % 12 != 0 ||ret < 21 || (ret + 1) % 21 != 0 || (counter(buffer, '\n')) % 5 != 0)
 		d_error();
 	terminos = terms(ret+1, buffer);
-	if (terminos_check(terminos) != 0)
+	if (terminos_check(terminos, (ret+1)/21) != 0)
                 d_error();
 	return (coordinates(terminos, ret / 21));
 }
@@ -28,12 +28,8 @@ int     valid_forms(char *str)
 
         i = 0;
         q = 0;
-        if (str[20] != '\n')
-		return (0);
-	while (str[i])
+	while (i < 20)
         {
-		if (i == 20 && str[i] != '\n')
-			return (0);
                 if (str[i] == '#')
                 {
                         if (i != 0)
@@ -48,10 +44,10 @@ int     valid_forms(char *str)
                                         q++;
                 }
                 i++;
-        }
-	if (q == 6 || q == 8)
+		if (q == 6 || q == 8)
                         return (1);
 
+        }
         return (0);
 }
 
@@ -92,15 +88,18 @@ char    **terms(int k, char *tmp)
         return (terminos);
 }
 
-int     terminos_check(char **str)
+int     terminos_check(char **str, int k)
 {
         int i;
         int a;
 
         i = 0;
         a = 0;
-        while (str[i])
+        while (i < k)
         {
+		if (str[i][4] != '\n' || str[i][9] != '\n' ||
+				str[i][14] != '\n' || counter(str[i], '\n') % 4 != 0)
+			d_error();
                 a += valid_forms(str[i]);
                 i++;
         }

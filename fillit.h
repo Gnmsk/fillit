@@ -44,7 +44,7 @@ typedef struct		s_karta
 }			t_karta;
 
 int     valid_forms(char *str);
-int     terminos_check(char **str);
+int     terminos_check(char **str, int k);
 char    **terms(int k, char *tmp);
 int      counter(char *s, int ch);
 t_fgrs	*shift(t_fgrs *temp);
