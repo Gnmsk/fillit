@@ -28,8 +28,12 @@ int     valid_forms(char *str)
 
         i = 0;
         q = 0;
-        while (str[i])
+        if (str[20] != '\n')
+		return (0);
+	while (str[i])
         {
+		if (i == 20 && str[i] != '\n')
+			return (0);
                 if (str[i] == '#')
                 {
                         if (i != 0)
@@ -44,9 +48,10 @@ int     valid_forms(char *str)
                                         q++;
                 }
                 i++;
-                if (q == 6 || q == 8)
-                        return (1);
         }
+	if (q == 6 || q == 8)
+                        return (1);
+
         return (0);
 }
 
