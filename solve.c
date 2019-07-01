@@ -83,7 +83,7 @@ char **solve(t_fgrs **memory)
        	mapsize = ft_max(memory[0]-> x, memory[0]-> y, 4) + 1;	
 	mapa = (t_map *)malloc(sizeof(t_map));
 	mapa->current = map(mapsize);
-	while (t < 6)
+	while (memory[t])
         {
                 empty = 0;
 		check = 0;
