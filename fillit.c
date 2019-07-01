@@ -25,6 +25,6 @@ int	main(int ac, char **av)
 
 void	d_error(void)
 {
-	ft_putendl("error");
+	write(1, "error\n", 6);
 	exit(0);
 }
