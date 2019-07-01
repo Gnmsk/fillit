@@ -15,13 +15,11 @@
 int	main(int ac, char **av)
 {
 	t_fgrs	**memory;
-	t_karta **mapa;
 
 	if (ac < 2)
 		return (-1);
 	memory = file_valid(av[1]);
-	mapa[0] = map(ft_max(memory[0]->x, memory[0]->y, 4));
-	solve(memory, mapa);
+	solve(memory);
 	return (0);
 }
 
@@ -29,16 +27,4 @@ void	d_error(void)
 {
 	ft_putendl("error");
 	exit(0);
-}
-
-int	display_map(char **map)
-{
-	int i;
-
-	i = 0;
-	while (map[i])
-	{
-		ft_putendl(map[i++]);
-	}
-	return (i);
 }
