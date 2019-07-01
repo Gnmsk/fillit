@@ -18,7 +18,7 @@ t_fgrs	**file_valid(char *file)
 	terminos = terms(ret+1, buffer);
 	if (terminos_check(terminos, (ret+1)/21) != 0)
                 d_error();
-	return (coordinates(terminos, ret / 21));
+	return (coordinates(terminos, (ret+1) / 21));
 }
 
 int     valid_forms(char *str)
