@@ -7,7 +7,7 @@ int	is_empty(t_karta mapa, t_fgrs *temp, int xx, int yy)
 	i = 0;
 	while (i <= 3)
 	{
-		if (mapa.map[temp->x[i] + xx][temp->y[i] + yy] != '.')
+		if (mapa.map[temp->y[i] + yy][temp->x[i] + xx] != '.')
 			return (0);
 		i++;
 	}
@@ -21,7 +21,7 @@ void	putin(t_fgrs *temp, t_karta mapa, int xx, int yy)
 	i = 0;
 	while (i < 4)
 	{
-		mapa.map[temp->x[i] + xx][temp->y[i] + yy] = temp->letter;
+		mapa.map[temp->y[i] + yy][temp->x[i] + xx] = temp->letter;
 		i++;
 	}
 }
@@ -33,7 +33,7 @@ void	putout(t_fgrs *temp, t_karta mapa, int xx, int yy)
         i = 0;
         while (i < 4)
 	{
-                mapa.map[temp->x[i] + xx][temp->y[i] + yy] = '.';
+                mapa.map[temp->y[i] + yy][temp->x[i] + xx] = '.';
 		i++;
 	}
 }
@@ -107,7 +107,7 @@ void	solve_map(t_fgrs **figuri, int n)
 	id = 0;
 	mapa.size = n;
 	mapa.map = map_create(mapa.size);
-	while (solve(figuri, mapa, n, id) == 0)
+	while (!solve(figuri, mapa, n, id))
 	{
 		free_map(&mapa.map, mapa.size);
 		mapa.size++;

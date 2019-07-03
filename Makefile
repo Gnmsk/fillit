@@ -1,7 +1,7 @@
 NAME = fillit
 FLAGS = -Wall -Wextra -Werror
 FILES = ./fillit.c \
-	./solve.c \
+	./solve2.c \
 	./translator.c \
 	./validation.c \
 
