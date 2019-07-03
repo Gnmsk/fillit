@@ -27,7 +27,6 @@ t_fgrs	**coordinates(char **terminos, int k)
         int t;
         int i;
         int j;
-//	int p;
 	t_fgrs	**lt;
 	
 	lt = (t_fgrs **)malloc(sizeof(t_fgrs) * k + 1);
@@ -50,22 +49,6 @@ t_fgrs	**coordinates(char **terminos, int k)
 		lt[t]->letter = (char)(t + 65);
 		lt[t] = shift(lt[t]);
 		t++;
-	/*	p = 0;
-		while(p < 4)
-		{
-			printf("%d ",lt[t]->x[p]);
-			p++;
-		}
-		p = 0;
-		printf("\n");
-		while(p < 4)
-		{
-			printf("%d ",lt[t]->y[p]);
-			p++;
-		}
-		printf("%c", lt[t]->letter);
-		printf("\n\n");
-		t++;
-*/        }
+	}
         return (lt);
 }
