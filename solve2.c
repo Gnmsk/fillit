@@ -1,34 +1,34 @@
 #include "fillit.h"
 
-int	is_empty(t_karta mapa, t_fgrs temp, int xx, int yy)
+int	is_empty(t_karta mapa, t_fgrs *temp, int xx, int yy)
 {
 	int i;
 
 	i = 0;
 	while (i++ <= 3)
 	{
-		if (mapa.map[temp.x[i] + xx][temp.y[i] + yy] != '.')
+		if (mapa.map[temp->x[i] + xx][temp->y[i] + yy] != '.')
 			return (0);
 	}
 	return (1);
 }
 
-void	putin(t_fgrs temp, t_karta mapa, int xx, int yy)
+void	putin(t_fgrs *temp, t_karta mapa, int xx, int yy)
 {
 	int i;
 
 	i = 0;
 	while (i++ <= 4)
-		mapa.map[temp.x[i] + xx][temp.y[i] + yy] = temp.letter;
+		mapa.map[temp->x[i] + xx][temp->y[i] + yy] = temp->letter;
 }
 
-void	putout(t_fgrs temp, t_karta mapa, int xx, int yy)
+void	putout(t_fgrs *temp, t_karta mapa, int xx, int yy)
 {
 	int i;
 
         i = 0;
         while (i++ <= 4)
-                mapa.map[temp.x[i] + xx][temp.y[i] + yy] = '.';
+                mapa.map[temp->x[i] + xx][temp->y[i] + yy] = '.';
 }
 
 char	**map_create(int size)
@@ -66,16 +66,16 @@ void	free_map(char ***map, int size)
 	map[0] = NULL;
 }
 
-int    solve(t_fgrs temp[], t_karta map, int n, int id)
+int    solve(t_fgrs **temp, t_karta map, int n, int id)
 {
         int xx;
 	int yy;
 
 	yy = 0;
-	while ((yy + ft_maxsingle(temp[id].y, 4)) <= map.size)
+	while ((yy + ft_maxsingle(temp[id]->y, 4)) <= map.size)
 	{
 		xx = 0;
-		while((xx + ft_maxsingle(temp[id].x, 4)) <= map.size)
+		while((xx + ft_maxsingle(temp[id]->x, 4)) <= map.size)
 		{
 			if(is_empty(map, temp[id], xx, yy))
 			{
@@ -92,7 +92,7 @@ int    solve(t_fgrs temp[], t_karta map, int n, int id)
 	return (0);
 }
 
-void	solve_map(t_fgrs *figuri[], int n)
+void	solve_map(t_fgrs **figuri, int n)
 {
 	t_karta mapa;
 	int id;

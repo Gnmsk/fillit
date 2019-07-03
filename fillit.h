@@ -42,17 +42,17 @@ char    **terms(int k, char *tmp);
 int      counter(char *s, int ch);
 t_fgrs	*shift(t_fgrs *temp);
 t_fgrs  **coordinates(char **terminos, int k);
-int    solve(t_fgrs temp[], t_karta map, int n, int id);
+int    solve(t_fgrs **temp, t_karta map, int n, int id);
 char	**map_create(int size);
 char    **remap(char ***mapa);
 t_fgrs  **file_valid(char *file);
 void	d_error(void);
 void    d_map(t_karta map);
-void	putin(t_fgrs temp, t_karta mapa, int xx, int yy);
-void    putout(t_fgrs temp, t_karta mapa, int xx, int yy);
+void	putin(t_fgrs *temp, t_karta mapa, int xx, int yy);
+void    putout(t_fgrs *temp, t_karta mapa, int xx, int yy);
 t_karta	map(int size);
-void    solve_map(t_fgrs *figuri[], int n);
+void    solve_map(t_fgrs **figuri, int n);
 void    free_map(char ***map, int size);
-int     is_empty(t_karta mapa, t_fgrs temp, int xx, int yy);
+int     is_empty(t_karta mapa, t_fgrs *temp, int xx, int yy);
 
 #endif
