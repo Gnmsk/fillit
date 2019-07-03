@@ -13,7 +13,7 @@ t_fgrs	**file_valid(char *file, int *i)
 	ret = read(fd, &buffer, BUFF_SIZE);
 	buffer[ret] = '\n';
 	buffer[ret+1] = '\0';
-	if(counter(buffer, '#') % 4 != 0 || counter(buffer, '.') % 12 != 0 || ret < 20 || (counter(buffer, '\n')) % 5 != 0)
+	if(counter(buffer, '#') % 4 != 0 || counter(buffer, '.') % 12 != 0 || ret < 20 || (ret+1) % 21 > 0 || counter(buffer, '.') == 0 || (counter(buffer, '\n')) % 5 != 0)
 		d_error();
 	terminos = terms(ret+1, buffer);
 	if (terminos_check(terminos, (ret+1)/21) != 0)
