@@ -20,7 +20,7 @@ int	main(int ac, char **av)
 	i = 5;
 	if (ac < 2)
 		return (-1);
-	memory = file_valid(av[1]);
+	memory = file_valid(av[1], &i);
 	solve_map(memory,i);
 	return (0);
 }

@@ -1,6 +1,6 @@
 #include "fillit.h"
 
-t_fgrs	**file_valid(char *file)
+t_fgrs	**file_valid(char *file, int *i)
 {
 	int fd;
 	int ret;
@@ -18,6 +18,7 @@ t_fgrs	**file_valid(char *file)
 	terminos = terms(ret+1, buffer);
 	if (terminos_check(terminos, (ret+1)/21) != 0)
                 d_error();
+	*i = (ret+1)/21;
 	return (coordinates(terminos, (ret+1) / 21));
 }
 

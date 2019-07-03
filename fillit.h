@@ -45,7 +45,7 @@ t_fgrs  **coordinates(char **terminos, int k);
 int    solve(t_fgrs **temp, t_karta map, int n, int id);
 char	**map_create(int size);
 char    **remap(char ***mapa);
-t_fgrs  **file_valid(char *file);
+t_fgrs  **file_valid(char *file, int *i);
 void	d_error(void);
 void    d_map(t_karta map);
 void	putin(t_fgrs *temp, t_karta mapa, int xx, int yy);
