@@ -17,7 +17,6 @@ int	main(int ac, char **av)
 	t_fgrs	**memory;
 	int i;
 
-	i = 5;
 	if (ac < 2)
 		return (-1);
 	memory = file_valid(av[1], &i);

@@ -103,9 +103,11 @@ void	solve_map(t_fgrs **figuri, int n)
 {
 	t_karta mapa;
 	int id;
+	int i;
 
+	i = 1;
 	id = 0;
-	mapa.size = n;
+	mapa.size = i;
 	mapa.map = map_create(mapa.size);
 	while (!solve(figuri, mapa, n, id))
 	{
