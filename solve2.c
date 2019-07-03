@@ -5,10 +5,11 @@ int	is_empty(t_karta mapa, t_fgrs *temp, int xx, int yy)
 	int i;
 
 	i = 0;
-	while (i++ <= 3)
+	while (i <= 3)
 	{
 		if (mapa.map[temp->x[i] + xx][temp->y[i] + yy] != '.')
 			return (0);
+		i++;
 	}
 	return (1);
 }
@@ -18,8 +19,11 @@ void	putin(t_fgrs *temp, t_karta mapa, int xx, int yy)
 	int i;
 
 	i = 0;
-	while (i++ <= 4)
+	while (i < 4)
+	{
 		mapa.map[temp->x[i] + xx][temp->y[i] + yy] = temp->letter;
+		i++;
+	}
 }
 
 void	putout(t_fgrs *temp, t_karta mapa, int xx, int yy)
@@ -27,8 +31,11 @@ void	putout(t_fgrs *temp, t_karta mapa, int xx, int yy)
 	int i;
 
         i = 0;
-        while (i++ <= 4)
+        while (i < 4)
+	{
                 mapa.map[temp->x[i] + xx][temp->y[i] + yy] = '.';
+		i++;
+	}
 }
 
 char	**map_create(int size)
@@ -72,10 +79,10 @@ int    solve(t_fgrs **temp, t_karta map, int n, int id)
 	int yy;
 
 	yy = 0;
-	while ((yy + ft_maxsingle(temp[id]->y, 4)) <= map.size)
+	while ((yy + ft_maxsingle(temp[id]->y, 4)) < map.size)
 	{
 		xx = 0;
-		while((xx + ft_maxsingle(temp[id]->x, 4)) <= map.size)
+		while((xx + ft_maxsingle(temp[id]->x, 4)) < map.size)
 		{
 			if(is_empty(map, temp[id], xx, yy))
 			{
@@ -100,7 +107,7 @@ void	solve_map(t_fgrs **figuri, int n)
 	id = 0;
 	mapa.size = n;
 	mapa.map = map_create(mapa.size);
-	while (!solve(figuri, mapa, n, id))
+	while (solve(figuri, mapa, n, id) == 0)
 	{
 		free_map(&mapa.map, mapa.size);
 		mapa.size++;
