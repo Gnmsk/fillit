@@ -1,6 +1,18 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   solve2.c                                           :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: tkelsie <tkelsie@student.42.fr>            +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2019/07/05 17:33:21 by tkelsie           #+#    #+#             */
+/*   Updated: 2019/07/05 17:58:33 by tkelsie          ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "fillit.h"
 
-int	is_empty(t_karta mapa, t_fgrs *temp, int xx, int yy)
+int		is_empty(t_karta mapa, t_fgrs *temp, int xx, int yy)
 {
 	int i;
 
@@ -30,61 +42,26 @@ void	putout(t_fgrs *temp, t_karta mapa, int xx, int yy)
 {
 	int i;
 
-        i = 0;
-        while (i < 4)
+	i = 0;
+	while (i < 4)
 	{
-                mapa.map[temp->y[i] + yy][temp->x[i] + xx] = '.';
+		mapa.map[temp->y[i] + yy][temp->x[i] + xx] = '.';
 		i++;
 	}
 }
 
-char	**map_create(int size)
+int		solve(t_fgrs **temp, t_karta map, int n, int id)
 {
-        char **map;
-        int x;
-        int y;
-
-        y = 0;
-        map = (char **)malloc(sizeof(char *) * (size + 1));
-        while (y < size)
-        {
-                map[y] = (char *)malloc(sizeof(char) * (size + 1));
-                x = 0;
-		while (x < size)
-		{
-			map[y][x] = '.';
-			x++;
-		}
-		map[y][x] = '\0';
-                y++;
-        }
-	map[y] = '\0';
-        return (map);
-}
-
-void	free_map(char ***map, int size)
-{
-	while (size--)
-	{
-		free(map[0][size]);
-		map[0][size] = NULL;
-	}
-	free(map[0]);
-	map[0] = NULL;
-}
-
-int    solve(t_fgrs **temp, t_karta map, int n, int id)
-{
-        int xx;
+	int xx;
 	int yy;
 
 	yy = 0;
 	while ((yy + ft_maxsingle(temp[id]->y, 4)) < map.size)
 	{
 		xx = 0;
-		while((xx + ft_maxsingle(temp[id]->x, 4)) < map.size)
+		while ((xx + ft_maxsingle(temp[id]->x, 4)) < map.size)
 		{
-			if(is_empty(map, temp[id], xx, yy))
+			if (is_empty(map, temp[id], xx, yy))
 			{
 				putin(temp[id], map, xx, yy);
 				if (id == n - 1 || solve(temp, map, n, id + 1))
@@ -101,9 +78,9 @@ int    solve(t_fgrs **temp, t_karta map, int n, int id)
 
 void	solve_map(t_fgrs **figuri, int n)
 {
-	t_karta mapa;
-	int id;
-	int i;
+	t_karta	mapa;
+	int		id;
+	int		i;
 
 	i = 1;
 	id = 0;

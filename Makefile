@@ -7,12 +7,15 @@ FILES = ./fillit.c \
 
 all: $(NAME)
 
-$(NAME):
+$(NAME): 
+	make -C ./libft
 	gcc $(FLAGS) -o fillit $(FILES) libft/libft.a
 
 clean:
-	/bin/rm -f fillit
+	make clean -C ./libft
 
 fclean : clean
+	make fclean -C ./libft
+	rm -f fillit
 
 re: fclean all
