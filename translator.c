@@ -6,7 +6,7 @@
 /*   By: tkelsie <tkelsie@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/05 17:24:24 by tkelsie           #+#    #+#             */
-/*   Updated: 2019/07/10 14:19:48 by tkelsie          ###   ########.fr       */
+/*   Updated: 2019/07/10 15:14:19 by tkelsie          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,7 +41,7 @@ t_fgrs	**coordinates(char **terminos, int k)
 	int		j;
 	t_fgrs	**lt;
 
-	lt = (t_fgrs **)malloc(sizeof(t_fgrs) * k + 1);
+	lt = (t_fgrs **)malloc(sizeof(t_fgrs) * k);
 	t = 0;
 	while (t < k)
 	{
@@ -62,10 +62,16 @@ t_fgrs	**coordinates(char **terminos, int k)
 	return (lt);
 }
 
-void	free_mem(t_fgrs ***memory, int size)
+void	free_mem(t_fgrs **memory, int size)
 {
-	while (size--)
-		free(*memory[size]);
+	size = 0;
+	while (memory[size])
+	{
+		free((void*)memory[size]);
+		size++;
+	}
+	free((void*)memory);
+
 	//free(memory);
 	//**memory = NULL;
 }

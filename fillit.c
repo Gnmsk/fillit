@@ -6,7 +6,7 @@
 /*   By: tkelsie <tkelsie@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/06/18 14:07:35 by tkelsie           #+#    #+#             */
-/*   Updated: 2019/07/10 14:20:33 by tkelsie          ###   ########.fr       */
+/*   Updated: 2019/07/10 15:55:53 by tkelsie          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,8 +19,8 @@ char	**map_create(int size)
 	int		y;
 
 	y = 0;
-	map = (char **)malloc(sizeof(char *) * (size) + 1);
-	map[size] = NULL;
+	map = (char **)malloc(sizeof(char *) * (size)/* + 1*/);
+	/*map[size] = NULL;*/
 	while (y < size)
 	{
 		map[y] = (char *)malloc(sizeof(char) * (size + 1));
@@ -36,15 +36,18 @@ char	**map_create(int size)
 	return (map);
 }
 
-void	free_map(char ***map, int size)
+void	free_map(char **map, int size)
 {
-	while (size--)
+	size = 0;
+	while (map[size])
 	{
-		free(map[0][size]);
-		map[0][size] = NULL;
+		free(map[size]);
+	//	map[0][size] = NULL;
+	size++;
 	}
-	free(map[0]);
-	map[0] = NULL;
+//	free(map[size]);
+	free((void*)map);
+//	map[0] = NULL;
 }
 
 int		main(int ac, char **av)
@@ -59,7 +62,8 @@ int		main(int ac, char **av)
 	}
 	memory = file_valid(av[1], &i);
 	solve_map(memory, i);
-	free_mem(&memory, i - 1);
+	i--;
+	free_mem(memory, i);
 	return (0);
 }
 
@@ -69,13 +73,14 @@ void	d_error(void)
 	exit(0);
 }
 
-void	d_map(t_karta mapa)
+void	d_map(t_karta *mapa)
 {
 	int i;
 
 	i = 0;
-	while (mapa.map[i])
+	while (mapa->map[i])
 	{
-		ft_putendl(mapa.map[i++]);
+		ft_putendl(mapa->map[i]);
+		i++;
 	}
 }
