@@ -6,7 +6,7 @@
 /*   By: tkelsie <tkelsie@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/05 17:24:24 by tkelsie           #+#    #+#             */
-/*   Updated: 2019/07/05 18:09:25 by tkelsie          ###   ########.fr       */
+/*   Updated: 2019/07/10 14:19:48 by tkelsie          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,4 +60,12 @@ t_fgrs	**coordinates(char **terminos, int k)
 		t++;
 	}
 	return (lt);
+}
+
+void	free_mem(t_fgrs ***memory, int size)
+{
+	while (size--)
+		free(*memory[size]);
+	//free(memory);
+	//**memory = NULL;
 }

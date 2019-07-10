@@ -6,7 +6,7 @@
 /*   By: tkelsie <tkelsie@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/06/18 14:07:35 by tkelsie           #+#    #+#             */
-/*   Updated: 2019/07/05 19:58:16 by tkelsie          ###   ########.fr       */
+/*   Updated: 2019/07/10 14:20:33 by tkelsie          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,6 +59,7 @@ int		main(int ac, char **av)
 	}
 	memory = file_valid(av[1], &i);
 	solve_map(memory, i);
+	free_mem(&memory, i - 1);
 	return (0);
 }
 

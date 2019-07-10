@@ -6,7 +6,7 @@
 /*   By: tkelsie <tkelsie@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/06/18 14:28:47 by tkelsie           #+#    #+#             */
-/*   Updated: 2019/07/05 18:22:41 by tkelsie          ###   ########.fr       */
+/*   Updated: 2019/07/10 14:10:02 by tkelsie          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,6 +51,7 @@ void				d_error(void);
 void				d_map(t_karta map);
 void				putin(t_fgrs *temp, t_karta mapa, int xx, int yy);
 void				putout(t_fgrs *temp, t_karta mapa, int xx, int yy);
+void				free_mem(t_fgrs ***memory, int size);
 t_karta				map(int size);
 void				solve_map(t_fgrs **figuri, int n);
 void				free_map(char ***map, int size);
