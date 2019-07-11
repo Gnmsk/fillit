@@ -19,7 +19,7 @@ char	**map_create(int size)
 	int		y;
 
 	y = 0;
-	map = (char **)malloc(sizeof(char *) * (size) + 1);
+	map = (char **)malloc(sizeof(char *) * (size + 1));
 	map[size] = NULL;
 	while (y < size)
 	{
@@ -33,6 +33,7 @@ char	**map_create(int size)
 		map[y][x] = '\0';
 		y++;
 	}
+	map[y] = NULL;
 	return (map);
 }
 
