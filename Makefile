@@ -1,5 +1,5 @@
 NAME = fillit
-FLAGS = -Wall -Wextra -Werror -g
+FLAGS = -Wall -Wextra -Werror
 FILES = ./fillit.c \
 	./solve2.c \
 	./translator.c \

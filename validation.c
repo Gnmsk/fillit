@@ -6,7 +6,7 @@
 /*   By: tkelsie <tkelsie@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/05 17:35:58 by tkelsie           #+#    #+#             */
-/*   Updated: 2019/07/10 15:35:10 by tkelsie          ###   ########.fr       */
+/*   Updated: 2019/07/13 18:03:54 by tkelsie          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,10 @@ t_fgrs	**file_valid(char *file, int *i)
 		d_error();
 	terminos = terms(ret + 1, buffer);
 	if (terminos_check(terminos, (ret + 1) / 21) != 0)
+	{
+		free_map(&terminos,(ret + 1) / 21);
 		d_error();
+	}
 	*i = (ret + 1) / 21;
 	return (coordinates(terminos, (ret + 1) / 21));
 }
@@ -86,19 +89,18 @@ int		counter(char *s, int ch)
 char	**terms(int k, char *tmp)
 {
 	int		t;
-	char	*tm;
 	char	**terminos;
 
 	t = 0;
 	terminos = (char **)malloc(sizeof(char *) * (k / 21) + 1);
-	tm = (char *)tmp;
 	while (t < k / 21)
 	{
-		terminos[t] = ft_strncpy(ft_strnew(21), tm, 20);
+		terminos[t] = ft_strncpy(ft_strnew(21), tmp, 20);
 		terminos[t][20] = '\0';
-		tm = tm + 21;
+		tmp = tmp + 21;
 		t++;
 	}
+	terminos[t] = NULL;
 	return (terminos);
 }
 

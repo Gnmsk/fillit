@@ -6,7 +6,7 @@
 /*   By: tkelsie <tkelsie@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/06/18 14:07:35 by tkelsie           #+#    #+#             */
-/*   Updated: 2019/07/10 15:55:53 by tkelsie          ###   ########.fr       */
+/*   Updated: 2019/07/13 18:04:13 by tkelsie          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,8 +19,8 @@ char	**map_create(int size)
 	int		y;
 
 	y = 0;
-	map = (char **)malloc(sizeof(char *) * (size)/* + 1*/);
-	/*map[size] = NULL;*/
+	map = (char **)malloc(sizeof(char *) * (size) + 1);
+	map[size] = NULL;
 	while (y < size)
 	{
 		map[y] = (char *)malloc(sizeof(char) * (size + 1));
@@ -36,18 +36,28 @@ char	**map_create(int size)
 	return (map);
 }
 
-void	free_map(char **map, int size)
+void	free_map(char ***map, int size)
 {
-	size = 0;
-	while (map[size])
+	while (size--)
 	{
-		free(map[size]);
-	//	map[0][size] = NULL;
-	size++;
+		free(map[0][size]);
+		map[0][size] = NULL;
 	}
-//	free(map[size]);
-	free((void*)map);
-//	map[0] = NULL;
+	free(map[0]);
+	map[0] = NULL;
+}
+
+void	free_fgrs(t_fgrs ***fgrs, int i)
+{
+	i = 0;
+	while (fgrs[i])
+	{
+		free(&fgrs[i]);
+		*fgrs[i] = NULL;
+		i++;
+	}
+	free(&fgrs);
+	*fgrs = NULL;
 }
 
 int		main(int ac, char **av)
@@ -62,8 +72,13 @@ int		main(int ac, char **av)
 	}
 	memory = file_valid(av[1], &i);
 	solve_map(memory, i);
-	i--;
-	free_mem(memory, i);
+	while (i--)
+	{
+		free(memory[i]);
+		memory[i] = NULL;
+	}
+	free(memory);
+	memory = NULL;
 	return (0);
 }
 
@@ -73,14 +88,11 @@ void	d_error(void)
 	exit(0);
 }
 
-void	d_map(t_karta *mapa)
+void	d_map(char **map)
 {
 	int i;
 
 	i = 0;
-	while (mapa->map[i])
-	{
-		ft_putendl(mapa->map[i]);
-		i++;
-	}
+	while (map[i])
+		ft_putendl(map[i++]);
 }
