@@ -6,7 +6,7 @@
 /*   By: tkelsie <tkelsie@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/06/18 14:07:35 by tkelsie           #+#    #+#             */
-/*   Updated: 2019/07/13 18:04:13 by tkelsie          ###   ########.fr       */
+/*   Updated: 2019/07/13 18:47:24 by tkelsie          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,19 +45,6 @@ void	free_map(char ***map, int size)
 	}
 	free(map[0]);
 	map[0] = NULL;
-}
-
-void	free_fgrs(t_fgrs ***fgrs, int i)
-{
-	i = 0;
-	while (fgrs[i])
-	{
-		free(&fgrs[i]);
-		*fgrs[i] = NULL;
-		i++;
-	}
-	free(&fgrs);
-	*fgrs = NULL;
 }
 
 int		main(int ac, char **av)

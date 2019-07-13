@@ -6,7 +6,7 @@
 /*   By: tkelsie <tkelsie@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/06/18 14:28:47 by tkelsie           #+#    #+#             */
-/*   Updated: 2019/07/13 18:00:45 by tkelsie          ###   ########.fr       */
+/*   Updated: 2019/07/13 18:50:35 by tkelsie          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,20 +41,18 @@ int					valid_forms(char *str);
 int					terminos_check(char **str, int k);
 char				**terms(int k, char *tmp);
 int					counter(char *s, int ch);
+t_karta				map(int size);
 t_fgrs				*shift(t_fgrs *temp);
 t_fgrs				**coordinates(char **terminos, int k);
+t_fgrs				**file_valid(char *file, int *i);
 int					solve(t_fgrs **temp, t_karta map, int n, int id);
 char				**map_create(int size);
-char				**remap(char ***mapa);
-t_fgrs				**file_valid(char *file, int *i);
 void				d_error(void);
 void				d_map(char **map);
 void				putin(t_fgrs *temp, t_karta mapa, int xx, int yy);
 void				putout(t_fgrs *temp, t_karta mapa, int xx, int yy);
-t_karta				map(int size);
 void				solve_map(t_fgrs **figuri, int n);
 void				free_map(char ***map, int size);
-void				free_fgrs(t_fgrs ***fgrs, int i);
 int					is_empty(t_karta mapa, t_fgrs *temp, int xx, int yy);
 
 #endif
