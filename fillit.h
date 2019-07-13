@@ -6,7 +6,7 @@
 /*   By: tkelsie <tkelsie@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/06/18 14:28:47 by tkelsie           #+#    #+#             */
-/*   Updated: 2019/07/13 18:50:35 by tkelsie          ###   ########.fr       */
+/*   Updated: 2019/07/13 18:59:55 by tkelsie          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,14 +45,14 @@ t_karta				map(int size);
 t_fgrs				*shift(t_fgrs *temp);
 t_fgrs				**coordinates(char **terminos, int k);
 t_fgrs				**file_valid(char *file, int *i);
-int					solve(t_fgrs **temp, t_karta map, int n, int id);
+int					solve(t_fgrs **temp, t_karta *map, int n, int id);
 char				**map_create(int size);
 void				d_error(void);
 void				d_map(char **map);
-void				putin(t_fgrs *temp, t_karta mapa, int xx, int yy);
-void				putout(t_fgrs *temp, t_karta mapa, int xx, int yy);
+void				putin(t_fgrs *temp, t_karta *mapa, int xx, int yy);
+void				putout(t_fgrs *temp, t_karta *mapa, int xx, int yy);
 void				solve_map(t_fgrs **figuri, int n);
 void				free_map(char ***map, int size);
-int					is_empty(t_karta mapa, t_fgrs *temp, int xx, int yy);
+int					is_empty(t_karta *mapa, t_fgrs *temp, int xx, int yy);
 
 #endif
