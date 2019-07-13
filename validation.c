@@ -6,7 +6,7 @@
 /*   By: tkelsie <tkelsie@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/05 17:35:58 by tkelsie           #+#    #+#             */
-/*   Updated: 2019/07/13 18:48:32 by tkelsie          ###   ########.fr       */
+/*   Updated: 2019/07/13 19:09:23 by tkelsie          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,7 @@ t_fgrs	**file_valid(char *file, int *i)
 	terminos = terms(ret + 1, buffer);
 	if (terminos_check(terminos, (ret + 1) / 21) != 0)
 	{
-		free_map(&terminos,(ret + 1) / 21);
+		free_map(&terminos, (ret + 1) / 21);
 		d_error();
 	}
 	*i = (ret + 1) / 21;
